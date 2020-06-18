@@ -15,7 +15,7 @@ class player:
         self.hp = 20
         self.mp = 20
         self.status_effect = []
-        self.location = "start"
+        self.location = "a1"
         self.game_over = False
 myPlayer = player()
 
@@ -239,10 +239,10 @@ zonemap = {
 ## game interacttivity
     
 def print_location():
-    print("\n" + ("#" * (4 * len(myplayer.location))))
-    print("# " + myplayer.location.upper() + '#')
-    print('# ' + zonemap[myplayer.position][DESCRIPTION] + ' #')
-    print("\n" + ("#" * (4 * len(myplayer.location))))
+    print("\n" + ("#" * (4 * len(myPlayer.location))))
+    print("# " + zonemap[myPlayer.location][ZONENAME] + '#')
+    print('# ' + zonemap[myPlayer.location][DESCRIPTION] + ' #')
+    print("\n" + ("#" * (4 * len(myPlayer.location))))
 
 
 def prompt():
@@ -262,20 +262,84 @@ def prompt():
 
 
 def player_move(myAction):
-    ask = "where would you like to move to?\n"
+    ask = "Where would you like to move to?\n"
     dest = input(ask)
-    if dest.lower() in ['left', 'west']:
-        destination = zonemap[myPlayer.location][LEFT]
-        movement_handler(destination)
-    elif dest.lower() in ['right', 'east']:
-        destination = zonemap[myPlayer.location][RIGHT]
-        movement_handler(destination)
-    elif dest.lower() in ['up', 'north']:
-        destination = zonemap[myPlayer.location][UP]
-        movement_handler(destination)
-    elif dest.lower() in ['down', 'south']:
-        destination = zonemap[myPlayer.location][DOWN]
-        movement_handler(destination)
+    while dest.lower() not in ["left", "west", 'right', 'east', 'up', 'north', 'down', 'south']:
+            print("\nThat is not a valid direction.")
+            dest = input("\nPlease select a new direction?")
+
+    if myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
+        while dest.lower() in ["left", "west"]:
+            print("\nYou're on the edge of the board.")
+            dest = input("\nPlease select a new direction?")
+            if dest.lower() in ['right', 'east']:
+                destination = zonemap[myPlayer.location][RIGHT]
+                movement_handler(destination)
+            elif dest.lower() in ['up', 'north']:
+                destination = zonemap[myPlayer.location][UP]
+                movement_handler(destination)
+           elif dest.lower() in ['down', 'south']:
+                destination = zonemap[myPlayer.location][DOWN]
+                movement_handler(destination)
+
+                
+    elif myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
+        while dest.lower() in ["left", "west"]:
+            print("\nYou're on the edge of the board.")
+            dest = input("\nPlease select a new direction?")
+            if dest.lower() in ['right', 'east']:
+                destination = zonemap[myPlayer.location][RIGHT]
+                movement_handler(destination)
+            elif dest.lower() in ['up', 'north']:
+                destination = zonemap[myPlayer.location][UP]
+                movement_handler(destination)
+           elif dest.lower() in ['down', 'south']:
+                destination = zonemap[myPlayer.location][DOWN]
+                movement_handler(destination)
+
+                
+    elif myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
+        while dest.lower() in ["left", "west"]:
+            print("\nYou're on the edge of the board.")
+            dest = input("\nPlease select a new direction?")
+            if dest.lower() in ['right', 'east']:
+                destination = zonemap[myPlayer.location][RIGHT]
+                movement_handler(destination)
+            elif dest.lower() in ['up', 'north']:
+                destination = zonemap[myPlayer.location][UP]
+                movement_handler(destination)
+           elif dest.lower() in ['down', 'south']:
+                destination = zonemap[myPlayer.location][DOWN]
+                movement_handler(destination)
+
+                
+    elif myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
+        while dest.lower() in ["left", "west"]:
+            print("\nYou're on the edge of the board.")
+            dest = input("\nPlease select a new direction?")
+            if dest.lower() in ['right', 'east']:
+                destination = zonemap[myPlayer.location][RIGHT]
+                movement_handler(destination)
+            elif dest.lower() in ['up', 'north']:
+                destination = zonemap[myPlayer.location][UP]
+                movement_handler(destination)
+           elif dest.lower() in ['down', 'south']:
+                destination = zonemap[myPlayer.location][DOWN]
+                movement_handler(destination)
+
+    else:
+        if dest.lower() in ['left', 'west']:
+            destination = zonemap[myPlayer.location][LEFT]
+            movement_handler(destination)
+        elif dest.lower() in ['right', 'east']:
+            destination = zonemap[myPlayer.location][RIGHT]
+            movement_handler(destination)
+        elif dest.lower() in ['up', 'north']:
+            destination = zonemap[myPlayer.location][UP]
+            movement_handler(destination)
+        elif dest.lower() in ['down', 'south']:
+            destination = zonemap[myPlayer.location][DOWN]
+            movement_handler(destination)
 
 def movement_handler(destination):
     print("\n" + "You have moved to the " + destination + ".")
@@ -303,37 +367,59 @@ def setup_game():
     for character in question1:
         sys.stdout.write(character)
         sys.stdout.flush()
-        time.sleep(0.05)
+        time.sleep(0.01)
     player_name = input("> ")
     myPlayer.name = player_name
 
-    question2 = "Hello, what role do you want to play?\n"
+    question2 = str(myPlayer.name) + ", what role do you want to play?\n"
     question2added = "(You can player as a warrior, mage, or priest)?\n"
     for character in question2:
         sys.stdout.write(character)
         sys.stdout.flush()
-        time.sleep(0.05)
+        time.sleep(0.01)
     for character in question2added:
         sys.stdout.write(character)
         sys.stdout.flush()
-        time.sleep(0.01)
+        time.sleep(0.005)
     player_job = input("> ")
     valid_jobs = ['warrior', 'mage', 'priest']
     if player_job.lower() in valid_jobs:
         myPlayer.job = player_job
         print("You are now a " + player_job + "!\n")
     while player_job.lower() not in valid_jobs:
+        print("Please setlect a valid role.")
         player_job = input("> ")
         if player_job.lower() in valid_jobs:
             myPlayer.job = player_job
             print("You are now a " + player_job + "!\n")
 
     ### INTRO
-    question3 = "Welcome. " + player_name
+    question3 = "Welcome. " + player_name + "\n"
     for character in question3:
         sys.stdout.write(character)
         sys.stdout.flush()
-        time.sleep(0.05)
-    
+        time.sleep(0.01)
+
+    speech1 = "Welcome to the something game.\n"
+    speech2 = "Ofc i made this.\n"
+    speech3 = "yeah of course you did.\n"
+    speech4 = "well then.\n"
+    for character in speech1:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.01)
+    for character in speech2:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.01)
+    for character in speech3:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.01)
+    for character in speech4:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.01)
+    main_game_loop()
 title_screen()
 
