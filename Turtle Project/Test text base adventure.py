@@ -262,69 +262,69 @@ def prompt():
 
 
 def player_move(myAction):
-    ask = "Where would you like to move to?\n"
+    ask = "Where would you like to move to?\n>"
     dest = input(ask)
     while dest.lower() not in ["left", "west", 'right', 'east', 'up', 'north', 'down', 'south']:
             print("\nThat is not a valid direction.")
-            dest = input("\nPlease select a new direction?")
+            dest = input("\nPlease select a new direction?\n>")
 
     if myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
         while dest.lower() in ["left", "west"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?")
+            dest = input("\nPlease select a new direction?\n>")
             if dest.lower() in ['right', 'east']:
                 destination = zonemap[myPlayer.location][RIGHT]
                 movement_handler(destination)
             elif dest.lower() in ['up', 'north']:
                 destination = zonemap[myPlayer.location][UP]
                 movement_handler(destination)
-           elif dest.lower() in ['down', 'south']:
+            elif dest.lower() in ['down', 'south']:
                 destination = zonemap[myPlayer.location][DOWN]
                 movement_handler(destination)
 
                 
-    elif myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
-        while dest.lower() in ["left", "west"]:
+    elif myPlayer.location in ["a4","b4","c4","d4"] and dest.lower() in ["right", "east"]:
+        while dest.lower() in ["right", "east"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?")
-            if dest.lower() in ['right', 'east']:
-                destination = zonemap[myPlayer.location][RIGHT]
+            dest = input("\nPlease select a new direction?\n>")
+            if dest.lower() in ['left', 'west']:
+                destination = zonemap[myPlayer.location][LEFT]
                 movement_handler(destination)
             elif dest.lower() in ['up', 'north']:
                 destination = zonemap[myPlayer.location][UP]
                 movement_handler(destination)
-           elif dest.lower() in ['down', 'south']:
+            elif dest.lower() in ['down', 'south']:
                 destination = zonemap[myPlayer.location][DOWN]
                 movement_handler(destination)
 
                 
-    elif myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
-        while dest.lower() in ["left", "west"]:
+    elif myPlayer.location in ["a1","a2","a3","a4"] and dest.lower() in ["up", "north"]:
+        while dest.lower() in ["up", "north"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?")
+            dest = input("\nPlease select a new direction?\n>")
             if dest.lower() in ['right', 'east']:
                 destination = zonemap[myPlayer.location][RIGHT]
                 movement_handler(destination)
-            elif dest.lower() in ['up', 'north']:
-                destination = zonemap[myPlayer.location][UP]
+            elif dest.lower() in ['left', 'west']:
+                destination = zonemap[myPlayer.location][LEFT]
                 movement_handler(destination)
-           elif dest.lower() in ['down', 'south']:
+            elif dest.lower() in ['down', 'south']:
                 destination = zonemap[myPlayer.location][DOWN]
                 movement_handler(destination)
 
                 
-    elif myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
+    elif myPlayer.location in ["d1","d2","d3","d4"] and dest.lower() in ["down", "south"]:
         while dest.lower() in ["left", "west"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?")
+            dest = input("\nPlease select a new direction?\n>")
             if dest.lower() in ['right', 'east']:
                 destination = zonemap[myPlayer.location][RIGHT]
                 movement_handler(destination)
             elif dest.lower() in ['up', 'north']:
                 destination = zonemap[myPlayer.location][UP]
                 movement_handler(destination)
-           elif dest.lower() in ['down', 'south']:
-                destination = zonemap[myPlayer.location][DOWN]
+            elif dest.lower() in ['left', 'west']:
+                destination = zonemap[myPlayer.location][LEFT]
                 movement_handler(destination)
 
     else:
@@ -347,7 +347,7 @@ def movement_handler(destination):
     print_location()
 
 def player_examine(action):
-    if zonemap[myPlayer.location][SOLVED]:
+    if zonemap[myPlayer.location][SOVLED]:
         print("You have already exhausted this zone.")
     else:
         print("You can activate a puzzle.")
@@ -422,4 +422,3 @@ def setup_game():
         time.sleep(0.01)
     main_game_loop()
 title_screen()
-
