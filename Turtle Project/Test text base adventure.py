@@ -4,6 +4,7 @@ import random
 import textwrap
 import sys
 import time
+from turtle import *
 
 screen_width = 100
 
@@ -19,10 +20,88 @@ class player:
         self.game_over = False
 myPlayer = player()
 
+#turtle setup
+from time import sleep
+from turtle import *    
+g = Turtle() #make turtle for grid
+space = Screen()
+def grid(length): #draws playing grid
+
+    g.hideturtle()
+    g.speed(0)
+    g.pensize(0)
+    g.penup()
+    g.setpos(-length/2, -length/2)
+    g.pendown()
+    g.fd(length)
+    g.penup()
+    g.setpos(-length/2, -length/4)
+    g.pendown()
+    g.fd(length)
+    g.penup()
+    g.setpos(-length/2, 0)
+    g.pendown()
+    g.fd(length)
+    g.penup()
+    g.setpos(-length/2, length/4)
+    g.pendown()
+    g.fd(length)
+    g.penup()
+    g.setpos(-length/2, length/2)
+    g.pendown()
+    g.fd(length)
+    g.penup()
+
+    g.seth(90)
+
+    g.setpos(-length/2, -length/2)
+    g.pendown()
+    g.fd(length)
+    g.penup()
+    g.setpos(-length/4, -length/2)
+    g.pendown()
+    g.fd(length)
+    g.penup()
+    g.setpos(0, -length/2)
+    g.pendown()
+    g.fd(length)
+    g.penup()
+    g.setpos(length/4, -length/2)
+    g.pendown()
+    g.fd(length)
+    g.penup()
+    g.setpos(length/2, -length/2)
+    g.pendown()
+    g.fd(length)
+    g.seth(0)
+    g.penup()
+
+grid(600)
+
+gridposx={'a': -300,'b': -150,'c': 0,'d': 150}
+gridposy={'1': 150,'2': 0,'3': -150,'4': -300}
+
+
+p = Turtle() #make turtle for playerpos
+p.hideturtle()
+def drawsquare():
+    p.clear()
+    pendown()
+    for x in range(4):
+        p.fd(50)
+        p.left(90)
+    penup()
+
+
+def printplayerlocation():
+    playerpos.setpos(gridposx[str(myPlayer.location[0])] + 50,gridposy[str(myPlayer.location[1])] + 50)
+    drawsquare
+
+
 ## title screen
 
 def title_screen_selections():
-    option = input("> ")
+    option = input(">  ")
     if option.lower() == ("play"):
         start_game()
     elif option.lower() == ("help"):
@@ -31,7 +110,7 @@ def title_screen_selections():
         sys.exit()
     while option.lower() not in ["play", "help", "quit"]:
         print("Please enter a valid command.")
-        option = input(">")
+        option = input("> ")
         if option.lower() == ("play"):
             start_game()
         elif option.lower() == ("help"):
@@ -243,16 +322,17 @@ def print_location():
     print("# " + zonemap[myPlayer.location][ZONENAME] + '#')
     print('# ' + zonemap[myPlayer.location][DESCRIPTION] + ' #')
     print("\n" + ("#" * (4 * len(myPlayer.location))))
+    printplayerlocation()
 
 
 def prompt():
     print ("\n" + "#########################")
     print ("What would you like to do?")
-    action = input (">")
+    action = input ("> ")
     acceptable_actions = ['move', 'go', 'travel', 'walk', 'quit', 'examine', 'inspect', 'interact', 'look']
     while action.lower() not in acceptable_actions:
         print('Unknow action, try again.\n')
-        action = input('> ')
+        action = input('>  ')
     if action.lower() == 'quit':
         sys.exit()
     elif action.lower() in ['move', 'go', 'travel', 'walk']:
@@ -262,16 +342,16 @@ def prompt():
 
 
 def player_move(myAction):
-    ask = "Where would you like to move to?\n>"
+    ask = "Where would you like to move to?\n> "
     dest = input(ask)
     while dest.lower() not in ["left", "west", 'right', 'east', 'up', 'north', 'down', 'south']:
             print("\nThat is not a valid direction.")
-            dest = input("\nPlease select a new direction?\n>")
+            dest = input("\nPlease select a new direction?\n> ")
 
     if myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
         while dest.lower() in ["left", "west"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?\n>")
+            dest = input("\nPlease select a new direction?\n> ")
             if dest.lower() in ['right', 'east']:
                 destination = zonemap[myPlayer.location][RIGHT]
                 movement_handler(destination)
@@ -286,7 +366,7 @@ def player_move(myAction):
     elif myPlayer.location in ["a4","b4","c4","d4"] and dest.lower() in ["right", "east"]:
         while dest.lower() in ["right", "east"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?\n>")
+            dest = input("\nPlease select a new direction?\n> ")
             if dest.lower() in ['left', 'west']:
                 destination = zonemap[myPlayer.location][LEFT]
                 movement_handler(destination)
@@ -301,7 +381,7 @@ def player_move(myAction):
     elif myPlayer.location in ["a1","a2","a3","a4"] and dest.lower() in ["up", "north"]:
         while dest.lower() in ["up", "north"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?\n>")
+            dest = input("\nPlease select a new direction?\n> ")
             if dest.lower() in ['right', 'east']:
                 destination = zonemap[myPlayer.location][RIGHT]
                 movement_handler(destination)
@@ -316,7 +396,7 @@ def player_move(myAction):
     elif myPlayer.location in ["d1","d2","d3","d4"] and dest.lower() in ["down", "south"]:
         while dest.lower() in ["left", "west"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?\n>")
+            dest = input("\nPlease select a new direction?\n> ")
             if dest.lower() in ['right', 'east']:
                 destination = zonemap[myPlayer.location][RIGHT]
                 movement_handler(destination)
@@ -341,6 +421,7 @@ def player_move(myAction):
             destination = zonemap[myPlayer.location][DOWN]
             movement_handler(destination)
 
+
 def movement_handler(destination):
     print("\n" + "You have moved to the " + destination + ".")
     myPlayer.location = destination
@@ -354,6 +435,7 @@ def player_examine(action):
 
 def start_game():
     setup_game()
+    printplayerlocation()
 
 def main_game_loop():
     while myPlayer.game_over is False:
@@ -368,7 +450,7 @@ def setup_game():
         sys.stdout.write(character)
         sys.stdout.flush()
         time.sleep(0.01)
-    player_name = input("> ")
+    player_name = input(">  ")
     myPlayer.name = player_name
 
     question2 = str(myPlayer.name) + ", what role do you want to play?\n"
@@ -381,14 +463,14 @@ def setup_game():
         sys.stdout.write(character)
         sys.stdout.flush()
         time.sleep(0.005)
-    player_job = input("> ")
+    player_job = input(">  ")
     valid_jobs = ['warrior', 'mage', 'priest']
     if player_job.lower() in valid_jobs:
         myPlayer.job = player_job
         print("You are now a " + player_job + "!\n")
     while player_job.lower() not in valid_jobs:
         print("Please setlect a valid role.")
-        player_job = input("> ")
+        player_job = input(">  ")
         if player_job.lower() in valid_jobs:
             myPlayer.job = player_job
             print("You are now a " + player_job + "!\n")
