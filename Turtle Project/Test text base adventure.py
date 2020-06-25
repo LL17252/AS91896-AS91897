@@ -78,24 +78,23 @@ def grid(length): #draws playing grid
 
 grid(600)
 
-gridposx={'a': -300,'b': -150,'c': 0,'d': 150}
-gridposy={'1': 150,'2': 0,'3': -150,'4': -300}
+gridposx={'1': -300,'2': -150,'3': 0,'4': 150}
+gridposy={'a': 150,'b': 0,'c': -150,'d': -300}
 
 
 p = Turtle() #make turtle for playerpos
 p.hideturtle()
-def drawsquare():
+p.speed(0)
+def dpl(): #draw player location
+    p.penup()
+    p.setpos(gridposx[str(myPlayer.location[1])] + 50,gridposy[str(myPlayer.location[0])] + 50)
     p.clear()
-    pendown()
+    p.pendown()
     for x in range(4):
         p.fd(50)
         p.left(90)
-    penup()
+    p.penup()
 
-
-def printplayerlocation():
-    playerpos.setpos(gridposx[str(myPlayer.location[0])] + 50,gridposy[str(myPlayer.location[1])] + 50)
-    drawsquare
 
 
 ## title screen
@@ -316,13 +315,13 @@ zonemap = {
         RIGHT: ''
         }}
 ## game interacttivity
-    
+dpl()
 def print_location():
     print("\n" + ("#" * (4 * len(myPlayer.location))))
     print("# " + zonemap[myPlayer.location][ZONENAME] + '#')
     print('# ' + zonemap[myPlayer.location][DESCRIPTION] + ' #')
     print("\n" + ("#" * (4 * len(myPlayer.location))))
-    printplayerlocation()
+    dpl()
 
 
 def prompt():
@@ -452,28 +451,6 @@ def setup_game():
         time.sleep(0.01)
     player_name = input(">  ")
     myPlayer.name = player_name
-
-    question2 = str(myPlayer.name) + ", what role do you want to play?\n"
-    question2added = "(You can player as a warrior, mage, or priest)?\n"
-    for character in question2:
-        sys.stdout.write(character)
-        sys.stdout.flush()
-        time.sleep(0.01)
-    for character in question2added:
-        sys.stdout.write(character)
-        sys.stdout.flush()
-        time.sleep(0.005)
-    player_job = input(">  ")
-    valid_jobs = ['warrior', 'mage', 'priest']
-    if player_job.lower() in valid_jobs:
-        myPlayer.job = player_job
-        print("You are now a " + player_job + "!\n")
-    while player_job.lower() not in valid_jobs:
-        print("Please setlect a valid role.")
-        player_job = input(">  ")
-        if player_job.lower() in valid_jobs:
-            myPlayer.job = player_job
-            print("You are now a " + player_job + "!\n")
 
     ### INTRO
     question3 = "Welcome. " + player_name + "\n"
