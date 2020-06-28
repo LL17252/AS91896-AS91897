@@ -171,8 +171,8 @@ solved_places = {'a1': False, 'a2': False, 'a3': False, 'a4': False,
                  }
 zonemap = {
     'a1':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "Very city like",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "",
@@ -181,8 +181,8 @@ zonemap = {
         RIGHT: 'a2'
         },
     'a2':{
-        ZONENAME: "XD",
-        DESCRIPTION: "description",
+        ZONENAME: "Bush",
+        DESCRIPTION: "Much green",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "",
@@ -191,8 +191,8 @@ zonemap = {
         RIGHT: 'a3'
         },
     'a3':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Stream",
+        DESCRIPTION: "Main stream",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "",
@@ -201,8 +201,8 @@ zonemap = {
         RIGHT: 'a4'
         },
     'a4':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "Very city like",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "",
@@ -211,8 +211,8 @@ zonemap = {
         RIGHT: ''
         },
     'b1':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Bush",
+        DESCRIPTION: "Much green, much quiet",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "a1",
@@ -221,8 +221,8 @@ zonemap = {
         RIGHT: 'b2'
         },
     'b2':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Stream",
+        DESCRIPTION: "Water go splash",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "a2",
@@ -231,8 +231,8 @@ zonemap = {
         RIGHT: 'b3'
         },
     'b3':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Stream",
+        DESCRIPTION: "Water go splash",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "a3",
@@ -241,8 +241,8 @@ zonemap = {
         RIGHT: 'b4'
         },
     'b4':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "Much noise, many people here",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "a4",
@@ -251,8 +251,8 @@ zonemap = {
         RIGHT: ''
         },
     'c1':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Stream",
+        DESCRIPTION: "The last part of the stream in your control",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "b1",
@@ -261,8 +261,8 @@ zonemap = {
         RIGHT: 'c2'
         },
     'c2':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Stream",
+        DESCRIPTION: "Water go splash",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "b2",
@@ -271,8 +271,8 @@ zonemap = {
         RIGHT: 'c3'
         },
     'c3':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Bush",
+        DESCRIPTION: "Much green",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "b3",
@@ -281,8 +281,8 @@ zonemap = {
         RIGHT: 'c4'
         },
     'c4':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "Very city like",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "b4",
@@ -291,8 +291,8 @@ zonemap = {
         RIGHT: ''
         },
     'd1':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "Much quiet, not a very active place",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "c1",
@@ -301,8 +301,8 @@ zonemap = {
         RIGHT: 'd2'
         },
     'd2':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Bush",
+        DESCRIPTION: "Much green, much trees",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "c2",
@@ -311,8 +311,8 @@ zonemap = {
         RIGHT: 'd3'
         },
     'd3':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Bush",
+        DESCRIPTION: "Much green",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "c3",
@@ -321,8 +321,8 @@ zonemap = {
         RIGHT: 'd4'
         },
     'd4':{
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "Very city like",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "c4",
@@ -333,10 +333,10 @@ zonemap = {
 ## game interacttivity
 dpl()
 def print_location():
-    print("\n" + ("#" * (4 * len(myPlayer.location))))
-    print("# " + zonemap[myPlayer.location][ZONENAME] + '#')
-    print('# ' + zonemap[myPlayer.location][DESCRIPTION] + ' #')
-    print("\n" + ("#" * (4 * len(myPlayer.location))))
+    print("\n" + ("################################################################################"))
+    print("~~" + zonemap[myPlayer.location][ZONENAME])
+    print("~~" + zonemap[myPlayer.location][DESCRIPTION])
+    print("\n" + ("################################################################################"))
     dpl()
 
 
@@ -500,7 +500,7 @@ def setup_game():
     for character in speech2:
         sys.stdout.write(character)
         sys.stdout.flush()
-        time.sleep(0.01)
+        time.sleep(0.05)
     for character in speech3:
         sys.stdout.write(character)
         sys.stdout.flush()
