@@ -21,8 +21,7 @@ class player:
 myPlayer = player()
 
 #turtle setup
-from time import sleep
-from turtle import *    
+from time import sleep    
 g = Turtle() #make turtle for grid
 space = Screen()
 def grid(length): #draws playing grid
@@ -128,6 +127,15 @@ def title_screen():
     print("    - Copyright 2020 -     ")
     title_screen_selections()
 
+def ig_help_menu():
+    print("\n\n\n")
+    print("      - Type your commands to do them -      ")
+    print("- Use 'up', 'down', 'left', 'right' to move -")
+    print("     - Use 'look' to inspect something -     ")
+    print("         - Good Luck and have fun! -         ")
+    prompt()
+    
+
 def help_menu():
     os.system('clear')
     print("#############################################")
@@ -137,6 +145,14 @@ def help_menu():
     print("- Use 'up', 'down', 'left', 'right' to move -")
     print("     - Use 'look' to inspect something -     ")
     print("         - Good Luck and have fun! -         ")
+    print('\n\n\n')
+    print("###########################")
+    print("# Welcome to the Text Rpg #")
+    print("###########################")
+    print("         - Play -          ")
+    print("         - Help -          ")
+    print("         - Quit -          ")
+    print("    - Copyright 2020 -     ")
     title_screen_selections()
 
 ZONENAME = ""
@@ -328,16 +344,18 @@ def prompt():
     print ("\n" + "#########################")
     print ("What would you like to do?")
     action = input ("> ")
-    acceptable_actions = ['move', 'go', 'travel', 'walk', 'quit', 'examine', 'inspect', 'interact', 'look']
+    acceptable_actions = ['move', 'go', 'travel', 'walk', 'quit', 'examine', 'inspect', 'interact', 'look', 'help']
     while action.lower() not in acceptable_actions:
-        print('Unknow action, try again.\n')
-        action = input('>  ')
+        print('Unknown action, try again.\n')
+        action = input('> ')
     if action.lower() == 'quit':
         sys.exit()
     elif action.lower() in ['move', 'go', 'travel', 'walk']:
         player_move(action.lower())
     elif action.lower() in ['examine', 'inspect', 'interact', 'look']:
         player_examine(action.lower())
+    elif action.lower == 'help':
+        ig_help_menu()
 
 
 def player_move(myAction):
@@ -345,12 +363,12 @@ def player_move(myAction):
     dest = input(ask)
     while dest.lower() not in ["left", "west", 'right', 'east', 'up', 'north', 'down', 'south']:
             print("\nThat is not a valid direction.")
-            dest = input("\nPlease select a new direction?\n> ")
+            dest = input("\nPlease select a new direction\n> ")
 
     if myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
         while dest.lower() in ["left", "west"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?\n> ")
+            dest = input("\nPlease select a new direction\n> ")
             if dest.lower() in ['right', 'east']:
                 destination = zonemap[myPlayer.location][RIGHT]
                 movement_handler(destination)
@@ -360,12 +378,15 @@ def player_move(myAction):
             elif dest.lower() in ['down', 'south']:
                 destination = zonemap[myPlayer.location][DOWN]
                 movement_handler(destination)
+            while dest.lower() not in ["left", "west", 'right', 'east', 'up', 'north', 'down', 'south']:
+                print("\nThat is not a valid direction.")
+                dest = input("\nPlease select a new direction\n> ")
 
                 
     elif myPlayer.location in ["a4","b4","c4","d4"] and dest.lower() in ["right", "east"]:
         while dest.lower() in ["right", "east"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?\n> ")
+            dest = input("\nPlease select a new direction\n> ")
             if dest.lower() in ['left', 'west']:
                 destination = zonemap[myPlayer.location][LEFT]
                 movement_handler(destination)
@@ -375,12 +396,15 @@ def player_move(myAction):
             elif dest.lower() in ['down', 'south']:
                 destination = zonemap[myPlayer.location][DOWN]
                 movement_handler(destination)
+            while dest.lower() not in ["left", "west", 'right', 'east', 'up', 'north', 'down', 'south']:
+                print("\nThat is not a valid direction.")
+                dest = input("\nPlease select a new direction\n> ")
 
                 
     elif myPlayer.location in ["a1","a2","a3","a4"] and dest.lower() in ["up", "north"]:
         while dest.lower() in ["up", "north"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?\n> ")
+            dest = input("\nPlease select a new direction\n> ")
             if dest.lower() in ['right', 'east']:
                 destination = zonemap[myPlayer.location][RIGHT]
                 movement_handler(destination)
@@ -390,12 +414,15 @@ def player_move(myAction):
             elif dest.lower() in ['down', 'south']:
                 destination = zonemap[myPlayer.location][DOWN]
                 movement_handler(destination)
+            while dest.lower() not in ["left", "west", 'right', 'east', 'up', 'north', 'down', 'south']:
+                print("\nThat is not a valid direction.")
+                dest = input("\nPlease select a new direction\n> ")
 
                 
     elif myPlayer.location in ["d1","d2","d3","d4"] and dest.lower() in ["down", "south"]:
-        while dest.lower() in ["left", "west"]:
+        while dest.lower() in ["down", "south"]:
             print("\nYou're on the edge of the board.")
-            dest = input("\nPlease select a new direction?\n> ")
+            dest = input("\nPlease select a new direction\n> ")
             if dest.lower() in ['right', 'east']:
                 destination = zonemap[myPlayer.location][RIGHT]
                 movement_handler(destination)
@@ -405,6 +432,9 @@ def player_move(myAction):
             elif dest.lower() in ['left', 'west']:
                 destination = zonemap[myPlayer.location][LEFT]
                 movement_handler(destination)
+            while dest.lower() not in ["left", "west", 'right', 'east', 'up', 'north', 'down', 'south']:
+                print("\nThat is not a valid direction.")
+                dest = input("\nPlease select a new direction\n> ")
 
     else:
         if dest.lower() in ['left', 'west']:
@@ -422,7 +452,7 @@ def player_move(myAction):
 
 
 def movement_handler(destination):
-    print("\n" + "You have moved to the " + destination + ".")
+    print("\n" + "You have moved to " + destination + ".")
     myPlayer.location = destination
     print_location()
 
