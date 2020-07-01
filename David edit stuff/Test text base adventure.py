@@ -128,12 +128,12 @@ def title_screen():
     title_screen_selections()
 
 def ig_help_menu():
-    print("\n\n\n\n\n\n\n")
+    print("\n\n")
     print("      - Type your commands to do them -      ")
     print("- Use 'up', 'down', 'left', 'right' to move -")
     print("     - Use 'look' to inspect something -     ")
     print("         - Good Luck and have fun! -         ")
-    print("\n\n\n\n")
+    print("\n")
     
 
 def help_menu():
@@ -334,9 +334,16 @@ zonemap = {
 dpl()
 def print_location():
     print("\n" + ("################################################################################"))
-    print("~ " + zonemap[myPlayer.location][ZONENAME] + " ~")
-    print("~ " + zonemap[myPlayer.location][DESCRIPTION] + " ~")
-    print("\n" + ("################################################################################"))
+    if len(zonemap[myPlayer.location][ZONENAME])%2 == 1:
+        print("#" + (int(((77-len(zonemap[myPlayer.location][ZONENAME]))/2))* (" "))+ str(zonemap[myPlayer.location][ZONENAME]) + (int(((77-len(zonemap[myPlayer.location][ZONENAME]))/2))* (" ")) + " #")
+    else:
+        print("#" + (int(((78-len(zonemap[myPlayer.location][ZONENAME]))/2))* (" "))+ str(zonemap[myPlayer.location][ZONENAME]) + (int(((78-len(zonemap[myPlayer.location][ZONENAME]))/2))* (" ")) + "#")
+    
+    if len(zonemap[myPlayer.location][DESCRIPTION])%2 == 1:
+        print("#" + (int(((77-len(zonemap[myPlayer.location][DESCRIPTION]))/2))* (" "))+ str(zonemap[myPlayer.location][DESCRIPTION]) + (int(((77-len(zonemap[myPlayer.location][DESCRIPTION]))/2))* (" ")) + " #")
+    else:
+        print("#" + (int(((78-len(zonemap[myPlayer.location][DESCRIPTION]))/2))* (" "))+ str(zonemap[myPlayer.location][DESCRIPTION]) + (int(((78-len(zonemap[myPlayer.location][DESCRIPTION]))/2))* (" ")) + "#")
+    print("################################################################################")
     dpl()
 
 
@@ -365,7 +372,7 @@ def player_move(myAction):
     while dest.lower() not in ["left", "west", 'right', 'east', 'up', 'north', 'down', 'south']:
             print("\nThat is not a valid direction.")
             dest = input("\nPlease select a new direction\n> ")
-
+            
     if myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
         while dest.lower() in ["left", "west"]:
             print("\nYou're on the edge of the board.")
