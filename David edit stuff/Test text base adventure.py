@@ -100,21 +100,21 @@ def dpl(): #draw player location
 
 def title_screen_selections():
     option = input(">  ")
-        sys.exit()
+    sys.exit()
     if option.lower() == ("play"):
         start_game()
     elif option.lower() == ("help"):
         help_menu()
     elif option.lower() == ("quit"):
-    while option.lower() not in ["play", "help", "quit"]:
-        print("Please enter a valid command.")
-        option = input("> ")
-        if option.lower() == ("play"):
-            start_game()
-        elif option.lower() == ("help"):
-            help_menu()
-        elif option.lower() == ("quit"):
-            sys.exit()
+        while option.lower() not in ["play", "help", "quit"]:
+            print("Please enter a valid command.")
+            option = input("> ")
+            if option.lower() == ("play"):
+                start_game()
+            elif option.lower() == ("help"):
+                help_menu()
+            elif option.lower() == ("quit"):
+                sys.exit()
 
 def title_screen():
     os.system('clear')
@@ -371,14 +371,14 @@ def prompt():
     while action.lower() not in acceptable_actions:
         print('Unknown action, try again.\n')
         action = input('> ')
-    if action.lower() == 'quit':
-        sys.exit()
-    elif action.lower() == 'help':
-        ig_help_menu()
-    elif action.lower() in ['move', 'go', 'travel', 'walk']:
-        player_move(action.lower())
-    elif action.lower() in ['examine', 'inspect', 'interact', 'look']:
-        player_examine(action.lower())
+        if action.lower() == 'quit':
+            sys.exit()
+        elif action.lower() == 'help':
+            ig_help_menu()
+        elif action.lower() in ['move', 'go', 'travel', 'walk']:
+            player_move(action.lower())
+        elif action.lower() in ['examine', 'inspect', 'interact', 'look']:
+            player_examine(action.lower())
     
 
 
@@ -386,8 +386,8 @@ def player_move(myAction):
     ask = "Where would you like to move to?\n> "
     dest = input(ask)
     while dest.lower() not in ["left", "west", 'right', 'east', 'up', 'north', 'down', 'south']:
-            print("\nThat is not a valid direction.")
-            dest = input("\nPlease select a new direction\n> ")
+        print("\nThat is not a valid direction.")
+        dest = input("\nPlease select a new direction\n> ")
             
     if myPlayer.location in ["a1","b1","c1","d1"] and dest.lower() in ["left", "west"]:
         while dest.lower() in ["left", "west"]:
