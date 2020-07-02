@@ -100,7 +100,6 @@ def dpl(): #draw player location
 
 def title_screen_selections():
     option = input(">  ")
-    sys.exit()
     if option.lower() == ("play"):
         start_game()
     elif option.lower() == ("help"):
@@ -371,14 +370,14 @@ def prompt():
     while action.lower() not in acceptable_actions:
         print('Unknown action, try again.\n')
         action = input('> ')
-        if action.lower() == 'quit':
-            sys.exit()
-        elif action.lower() == 'help':
-            ig_help_menu()
-        elif action.lower() in ['move', 'go', 'travel', 'walk']:
-            player_move(action.lower())
-        elif action.lower() in ['examine', 'inspect', 'interact', 'look']:
-            player_examine(action.lower())
+    if action.lower() == 'quit':
+        sys.exit()
+    elif action.lower() == 'help':
+        ig_help_menu()
+    elif action.lower() in ['move', 'go', 'travel', 'walk']:
+        player_move(action.lower())
+    elif action.lower() in ['examine', 'inspect', 'interact', 'look']:
+        player_examine(action.lower())
     
 
 
