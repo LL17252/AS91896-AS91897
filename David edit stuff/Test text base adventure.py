@@ -100,12 +100,12 @@ def dpl(): #draw player location
 
 def title_screen_selections():
     option = input(">  ")
+        sys.exit()
     if option.lower() == ("play"):
         start_game()
     elif option.lower() == ("help"):
         help_menu()
     elif option.lower() == ("quit"):
-        sys.exit()
     while option.lower() not in ["play", "help", "quit"]:
         print("Please enter a valid command.")
         option = input("> ")
@@ -171,7 +171,6 @@ solved_places = {'a1': False, 'a2': False, 'a3': False, 'a4': False,
                  }
 zonemap = {
     'a1':{
-    	ZONEPOS: "a1",
         ZONENAME: "City Area",
         DESCRIPTION: "The upper left most City Area",
         EXAMINATION: "examine",
@@ -183,7 +182,7 @@ zonemap = {
         },
 
     'a2':{
-        ZONEPOS: "a2",
+  
         ZONENAME: "Bush",
         DESCRIPTION: "A place with many trees, almost like a forest",
         EXAMINATION: "examine",
@@ -195,7 +194,6 @@ zonemap = {
         },
 
     'a3':{
-    	ZONEPOS: "a3",
         ZONENAME: "Stream",
         DESCRIPTION: "The main Stream connected to the City Area",
         EXAMINATION: "examine",
@@ -207,7 +205,6 @@ zonemap = {
         },
 
     'a4':{
-    	ZONEPOS: "a4",
         ZONENAME: "City Area",
         DESCRIPTION: "Your starting point",
         EXAMINATION: "examine",
@@ -219,7 +216,6 @@ zonemap = {
         },
 
     'b1':{
-    	ZONEPOS: "b1",
         ZONENAME: "Bush",
         DESCRIPTION: "Very damp and very dark",
         EXAMINATION: "examine",
@@ -231,7 +227,6 @@ zonemap = {
         },
 
     'b2':{
-    	ZONEPOS: "b2",
         ZONENAME: "Stream",
         DESCRIPTION: "The centre of the stream",
         EXAMINATION: "examine",
@@ -243,7 +238,6 @@ zonemap = {
         },
 
     'b3':{
-    	ZONEPOS: "b3",
         ZONENAME: "Stream",
         DESCRIPTION: "A large area with quick flowing water",
         EXAMINATION: "examine",
@@ -255,7 +249,6 @@ zonemap = {
         },
 
     'b4':{
-    	ZONEPOS: "b4",
         ZONENAME: "City Area",
         DESCRIPTION: "A very urban place with lots of cars passing by",
         EXAMINATION: "examine",
@@ -267,7 +260,6 @@ zonemap = {
         },
 
     'c1':{
-    	ZONEPOS: "c1",
         ZONENAME: "Stream",
         DESCRIPTION: "An area with eels due to it's slow flowing water",
         EXAMINATION: "examine",
@@ -279,7 +271,6 @@ zonemap = {
         },
 
     'c2':{
-    	ZONEPOS: "c2",
         ZONENAME: "Stream",
         DESCRIPTION: "A small area with lots of overflowing water",
         EXAMINATION: "examine",
@@ -291,7 +282,6 @@ zonemap = {
         },
 
     'c3':{
-    	ZONEPOS: "c3",
         ZONENAME: "Bush",
         DESCRIPTION: "Much of the area is covered by a layer of water",
         EXAMINATION: "examine",
@@ -303,7 +293,6 @@ zonemap = {
         },
 
     'c4':{
-    	ZONEPOS: "c4",
         ZONENAME: "City Area",
         DESCRIPTION: "An area with lots of litter thrown around",
         EXAMINATION: "examine",
@@ -315,7 +304,6 @@ zonemap = {
         },
 
     'd1':{
-    	ZONEPOS: "d1",
         ZONENAME: "City Area",
         DESCRIPTION: "Very quiet, not a very active place",
         EXAMINATION: "examine",
@@ -327,7 +315,6 @@ zonemap = {
         },
 
     'd2':{
-    	ZONEPOS: "d2",
         ZONENAME: "Bush",
         DESCRIPTION: "An area with damp long grass",
         EXAMINATION: "examine",
@@ -339,7 +326,6 @@ zonemap = {
         },
 
     'd3':{
-    	ZONEPOS: "d3",
         ZONENAME: "Bush",
         DESCRIPTION: "Much green",
         EXAMINATION: "examine",
@@ -351,7 +337,6 @@ zonemap = {
         },
 
     'd4':{
-    	ZONEPOS: "d4",
         ZONENAME: "City Area",
         DESCRIPTION: "Very city like",
         EXAMINATION: "examine",
