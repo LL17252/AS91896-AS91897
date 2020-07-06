@@ -6,7 +6,7 @@ import sys
 import time
 from turtle import *
 
-screen_width = 100
+
 
 #player setup
 class player:
@@ -21,11 +21,12 @@ class player:
 myPlayer = player()
 
 #turtle setup
-from time import sleep    
 g = Turtle() #make turtle for grid
-space = Screen()
-def grid(length): #draws playing grid
 
+screen = Screen()
+screen.setup(600,600)
+def grid(length): #draws playing grid
+    screen.tracer(0)
     g.hideturtle()
     g.speed(0)
     g.pensize(0)
@@ -74,12 +75,13 @@ def grid(length): #draws playing grid
     g.fd(length)
     g.seth(0)
     g.penup()
-
+    screen.tracer(1)
 grid(600)
 
 gridposx={'1': -300,'2': -150,'3': 0,'4': 150}
 gridposy={'a': 150,'b': 0,'c': -150,'d': -300}
 
+from turtletest import *
 
 p = Turtle() #make turtle for playerpos
 p.hideturtle()
@@ -94,6 +96,9 @@ def dpl(): #draw player location
         p.left(90)
     p.penup()
 
+
+screen.setup(600,600)
+drawstream()
 
 
 ## title screen
@@ -182,6 +187,7 @@ zonemap = {
         },
 
     'a2':{
+  
         ZONENAME: "Bush",
         DESCRIPTION: "A place with many trees, almost like a forest",
         EXAMINATION: "examine",
@@ -348,12 +354,21 @@ zonemap = {
 
 ## game interacttivity
 dpl()
+
 def print_location():
     print("\n" + ("################################################################################"))
-    print("~~" + zonemap[myPlayer.location][ZONENAME])
-    print("~~" + zonemap[myPlayer.location][DESCRIPTION])
-    print("\n" + ("################################################################################"))
+    if len(zonemap[myPlayer.location][ZONENAME])%2 == 1:
+        print("#" + (int(((77-len(zonemap[myPlayer.location][ZONENAME]))/2))* (" "))+ str(zonemap[myPlayer.location][ZONENAME]) + (int(((77-len(zonemap[myPlayer.location][ZONENAME]))/2))* (" ")) + " #")
+    else:
+        print("#" + (int(((78-len(zonemap[myPlayer.location][ZONENAME]))/2))* (" "))+ str(zonemap[myPlayer.location][ZONENAME]) + (int(((78-len(zonemap[myPlayer.location][ZONENAME]))/2))* (" ")) + "#")
+    
+    if len(zonemap[myPlayer.location][DESCRIPTION])%2 == 1:
+        print("#" + (int(((77-len(zonemap[myPlayer.location][DESCRIPTION]))/2))* (" "))+ str(zonemap[myPlayer.location][DESCRIPTION]) + (int(((77-len(zonemap[myPlayer.location][DESCRIPTION]))/2))* (" ")) + " #")
+    else:
+        print("#" + (int(((78-len(zonemap[myPlayer.location][DESCRIPTION]))/2))* (" "))+ str(zonemap[myPlayer.location][DESCRIPTION]) + (int(((78-len(zonemap[myPlayer.location][DESCRIPTION]))/2))* (" ")) + "#")
+    print("################################################################################")
     dpl()
+    
 
 
 def prompt():
@@ -370,7 +385,7 @@ def prompt():
         player_move(action.lower())
     elif action.lower() in ['examine', 'inspect', 'interact', 'look']:
         player_examine(action.lower())
-    elif action.lower == 'help':
+    elif action.lower() == 'help':
         ig_help_menu()
 
 
