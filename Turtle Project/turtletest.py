@@ -6,69 +6,6 @@ import sys
 import time
 from turtle import *
 
-#turtle setup
-from time import sleep    
-g = Turtle() #make turtle for grid
-g.hideturtle()
-space = Screen()
-def grid(length): #draws playing grid
-
-    g.hideturtle()
-    g.speed(0)
-    g.pensize(0)
-    g.penup()
-    g.setpos(-length/2, -length/2)
-    g.pendown()
-    g.fd(length)
-    g.penup()
-    g.setpos(-length/2, -length/4)
-    g.pendown()
-    g.fd(length)
-    g.penup()
-    g.setpos(-length/2, 0)
-    g.pendown()
-    g.fd(length)
-    g.penup()
-    g.setpos(-length/2, length/4)
-    g.pendown()
-    g.fd(length)
-    g.penup()
-    g.setpos(-length/2, length/2)
-    g.pendown()
-    g.fd(length)
-    g.penup()
-
-    g.seth(90)
-
-    g.setpos(-length/2, -length/2)
-    g.pendown()
-    g.fd(length)
-    g.penup()
-    g.setpos(-length/4, -length/2)
-    g.pendown()
-    g.fd(length)
-    g.penup()
-    g.setpos(0, -length/2)
-    g.pendown()
-    g.fd(length)
-    g.penup()
-    g.setpos(length/4, -length/2)
-    g.pendown()
-    g.fd(length)
-    g.penup()
-    g.setpos(length/2, -length/2)
-    g.pendown()
-    g.fd(length)
-    g.seth(0)
-    g.penup()
-
-grid(600)
-
-gridposx={'1': -300,'2': -150,'3': 0,'4': 150}
-gridposy={'a': 150,'b': 0,'c': -150,'d': -300}
-
-
-ZONEPOS = ""
 ZONENAME = ""
 DESCRIPTION = "description"
 EXAMINATION = "examine"
@@ -80,9 +17,8 @@ RIGHT = 'right', 'east'
 
 zonemap = {
     'a1':{
-        ZONEPOS: 'a1',
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "The upper left most City Area",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "",
@@ -90,10 +26,11 @@ zonemap = {
         LEFT: '',
         RIGHT: 'a2'
         },
+
     'a2':{
-        ZONEPOS: 'a2',
-        ZONENAME: "XD",
-        DESCRIPTION: "description",
+  
+        ZONENAME: "Bush",
+        DESCRIPTION: "A place with many trees, almost like a forest",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "",
@@ -101,10 +38,10 @@ zonemap = {
         LEFT: 'a1',
         RIGHT: 'a3'
         },
+
     'a3':{
-        ZONEPOS: 'a3',
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Stream",
+        DESCRIPTION: "The main Stream connected to the City Area",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "",
@@ -112,10 +49,10 @@ zonemap = {
         LEFT: 'a2',
         RIGHT: 'a4'
         },
+
     'a4':{
-        ZONEPOS: 'a4',
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "Your starting point",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "",
@@ -123,10 +60,10 @@ zonemap = {
         LEFT: 'a3',
         RIGHT: ''
         },
+
     'b1':{
-        ZONEPOS: 'b1',
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Bush",
+        DESCRIPTION: "Very damp and very dark",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "a1",
@@ -134,10 +71,10 @@ zonemap = {
         LEFT: '',
         RIGHT: 'b2'
         },
+
     'b2':{
-        ZONEPOS: 'b2',
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Stream",
+        DESCRIPTION: "The centre of the stream",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "a2",
@@ -145,10 +82,10 @@ zonemap = {
         LEFT: 'b1',
         RIGHT: 'b3'
         },
+
     'b3':{
-        ZONEPOS: 'b3',
         ZONENAME: "Stream",
-        DESCRIPTION: "description",
+        DESCRIPTION: "A large area with quick flowing water",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "a3",
@@ -156,10 +93,10 @@ zonemap = {
         LEFT: 'b2',
         RIGHT: 'b4'
         },
+
     'b4':{
-        ZONEPOS: 'b4',
-        ZONENAME: "Stream",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "A very urban place with lots of cars passing by",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "a4",
@@ -167,10 +104,10 @@ zonemap = {
         LEFT: 'b3',
         RIGHT: ''
         },
+
     'c1':{
-        ZONEPOS: 'c1',
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Stream",
+        DESCRIPTION: "An area with eels due to it's slow flowing water",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "b1",
@@ -178,10 +115,10 @@ zonemap = {
         LEFT: '',
         RIGHT: 'c2'
         },
+
     'c2':{
-        ZONEPOS: 'c2',
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Stream",
+        DESCRIPTION: "A small area with lots of overflowing water",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "b2",
@@ -189,10 +126,10 @@ zonemap = {
         LEFT: 'c1',
         RIGHT: 'c3'
         },
+
     'c3':{
-        ZONEPOS: 'c3',
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "Bush",
+        DESCRIPTION: "Much of the area is covered by a layer of water",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "b3",
@@ -200,10 +137,10 @@ zonemap = {
         LEFT: 'c2',
         RIGHT: 'c4'
         },
+
     'c4':{
-        ZONEPOS: 'c4',
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "An area with lots of litter thrown around",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "b4",
@@ -211,10 +148,10 @@ zonemap = {
         LEFT: 'c3',
         RIGHT: ''
         },
+
     'd1':{
-        ZONEPOS: 'd1',
-        ZONENAME: "Stream",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "Very quiet, not a very active place",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "c1",
@@ -222,10 +159,10 @@ zonemap = {
         LEFT: '',
         RIGHT: 'd2'
         },
+
     'd2':{
-        ZONEPOS: 'd2',
-        ZONENAME: "Stream",
-        DESCRIPTION: "description",
+        ZONENAME: "Bush",
+        DESCRIPTION: "An area with damp long grass",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "c2",
@@ -233,10 +170,10 @@ zonemap = {
         LEFT: 'd1',
         RIGHT: 'd3'
         },
+
     'd3':{
-        ZONEPOS: 'd3',
-        ZONENAME: "Stream",
-        DESCRIPTION: "description",
+        ZONENAME: "Bush",
+        DESCRIPTION: "Much green",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "c3",
@@ -244,10 +181,10 @@ zonemap = {
         LEFT: 'd2',
         RIGHT: 'd4'
         },
+
     'd4':{
-        ZONEPOS: 'd4',
-        ZONENAME: "lol",
-        DESCRIPTION: "description",
+        ZONENAME: "City Area",
+        DESCRIPTION: "Very city like",
         EXAMINATION: "examine",
         SOVLED: False,
         UP: "c4",
@@ -256,17 +193,9 @@ zonemap = {
         RIGHT: ''
         }}
 
+gridposx={'1': -300,'2': -150,'3': 0,'4': 150}
+gridposy={'a': 150,'b': 0,'c': -150,'d': -300}
 
-o= Turtle()
-o.speed(-100000000000)
-o.hideturtle()
-o.pu()
-
-
-l= Turtle()
-l.speed(-100000000000)
-o.hideturtle()
-o.pu()
 
 def dpl(): #draw player location
     p.pu()
@@ -279,6 +208,8 @@ def dpl(): #draw player location
         p.lt(170)
     p.end_fill()
     p.pu()
+
+
 def fancypattern():
   p.pu()
   p.setpos(gridposx[str(myPlayer.location[1])] + 50,gridposy[str(myPlayer.location[0])] + 50)
@@ -297,23 +228,25 @@ def drawstream():
     if zonemap[t][ZONENAME] == "Stream":
       wave(gridposx[t[1]], gridposy[t[0]])
     
+o = Turtle()
+o.speed(0)
+o.hideturtle()
+o.pu()
 
 def wave(posx, posy):
+  screen.tracer(0)
   o.color('blue')
   for l in range(5):
     o.setpos(posx, posy+((80*l)/3)+3)
     o.pd()
-    for x in range(10):
-      o.fd(4.3)
-      o.lt(5)
-    for x in range(20):
-      o.fd(4.3)
-      o.rt(5)
-    for x in range(10):
-      o.fd(4.3)
-      o.lt(5)
+    for x in range(100):
+      o.fd(.43)
+      o.lt(.5)
+    for x in range(200):
+      o.fd(.43)
+      o.rt(.5)
+    for x in range(100):
+      o.fd(.43)
+      o.lt(.5)
     o.pu()
-
-drawstream()
-input()
-
+  screen.tracer(1)
