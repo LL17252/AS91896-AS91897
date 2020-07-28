@@ -33,7 +33,7 @@ scenarios= {
   },
 }
 
-answers={
+solutions={
 'stream':{
 
 'pH1':"Check for any pollution present in the stream as while they they are decomposing they release toxins which will affect the PH level in the stream. Anything that has a coating like pant has chemicals attached to it which will affect the oxygen and nurtrient levels in the stream",
