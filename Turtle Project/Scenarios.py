@@ -13,8 +13,6 @@ scenarios= {
 
   'oxygen':"There are some eels in the stream although they seem to come up more often than usual, is there something wrong with the water?",
 
-  'flow':"Oh no! There's been heavy rain, it seems like a floodplate will occur. How will you reduce the effect of the floodplate?"},
-
   'city': {
 
   'pollution':"There seems to be a lot of rubbish and waste that is stuck around the drain area in the city, what would happen if it builds up?",
@@ -30,6 +28,8 @@ scenarios= {
   'plastic':"There seems to be quite a lot of plastic here in the surrounding area which is quite bad because as it degrades it will release toxic chemicals into the soil and that will impact the plants that grow within that soil but also reduce the fertility of the soil meaning that it might be harder for plants to grow etc. What should you do about it?",
   
   'trees':"There doesn’t seem to be many trees around this area, what should you do?"
+    
+  'flow':"Oh no! There's been heavy rain, it seems like a floodplate will occur. How will you reduce the effect of the floodplate?"},
   },
 }
 
@@ -65,4 +65,6 @@ solutions={
 'plastic':"Pick up any plastic waste that is present in the area to prevent the spread of toxic chemicals.",
 
 'trees':"Plant more trees as that will enable more wildlife to come into the area with reference to the food chain. If you bring back insects and bugs with trees then other wildlife with insects and bugs as their food source will come back."}
+ 
+'flow': "Plant more trees/plants around the area to help alleviate the flow of water and pollution."
 }
